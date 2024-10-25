@@ -8,9 +8,11 @@
 
 
     <div class="flex flex-wrap gap-5 mt-5">
-        <p class="">
-            <x-button href="/jobs/{{ $job->id  }}/edit">Edit Job</x-button>
-        </p>
+        @can('edit', $job)
+            <p class="">
+                <x-button href="/jobs/{{ $job->id  }}/edit">Edit Job</x-button>
+            </p>
+        @endcan
 
         <p>
             <x-button href="/jobs">Back to jobs</x-button>
