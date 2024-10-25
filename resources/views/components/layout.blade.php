@@ -36,7 +36,10 @@
                         @endguest
 
                         @auth
-                            <x-nav-link href="/login">Hello</x-nav-link>
+                            <form method="POST" action="/logout">
+                                @csrf
+                                <x-form-button>Log Out</x-form-button>
+                            </form>
                         @endauth
                     </div>
                 </div>
