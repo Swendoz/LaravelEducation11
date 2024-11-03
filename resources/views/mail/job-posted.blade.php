@@ -1,6 +1,7 @@
 <h2>
-    {{$job->title}}
+    {{ $job->title }}
 </h2>
+
 <div>
     Congrats! Your job is now live on our website.
 </div>

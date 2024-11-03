@@ -5,10 +5,11 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 
-Route::get('test', function() {
-    \Illuminate\Support\Facades\Mail::to('hhypernanoo@gmail.com')->send(
-        new \App\Mail\JobPosted()
-    );
+Route::get('test', function () {
+
+    $job = \App\Models\Job::first();
+
+    \App\Jobs\TranslateJob::dispatch($job);
 
     return 'Done';
 });
