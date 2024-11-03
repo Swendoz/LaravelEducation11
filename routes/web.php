@@ -5,11 +5,13 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 
-//Route::get('/', function () {
-//    return view('welcome', [
-//        'greeting' => 'Hello',
-//    ]);
-//});
+Route::get('test', function() {
+    \Illuminate\Support\Facades\Mail::to('hhypernanoo@gmail.com')->send(
+        new \App\Mail\JobPosted()
+    );
+
+    return 'Done';
+});
 
 Route::view('/', 'welcome', [
     'greeting' => 'Hello',
@@ -17,8 +19,8 @@ Route::view('/', 'welcome', [
 Route::view('/contact', 'contact');
 
 
-Route::resource('jobs', JobController::class)->only(['index', 'show']);
-Route::resource('jobs', JobController::class)->except(['index', 'show'])->middleware('auth');
+//Route::resource('jobs', JobController::class)->only(['index', 'show']);
+//Route::resource('jobs', JobController::class)->except(['index', 'show'])->middleware('auth');
 
 Route::get('/jobs', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create']);
